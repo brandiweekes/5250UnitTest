@@ -16,13 +16,49 @@ namespace UnitTests.GameEngine
             // Arrange
             var Roll = 1;
             var Dice = 10;
-            var Expected = 1;
+            //var Expected = 1;
 
             // Act
             var Actual = Crawl.GameEngine.HelperEngine.RollDice(Roll, Dice);
-            
+
+            // Reset
+            Crawl.Models.GameGlobals.ToggleRandomState();
+
             // Assert
-            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+            Assert.NotZero(Actual, TestContext.CurrentContext.Test.Name);
+        }
+
+        [Test]
+        public static int RollDice_Roll_2_Dice_10_Should_Pass()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public static int RollDice_Roll_0_Dice_10_Should_Fail()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public static int RollDice_Roll_Neg1_Dice_10_Should_Fail()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public static int RollDice_Roll_1_Dice_Neg1_Should_Fail()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public static int RollDice_Roll_1_Dice_0_Should_Fail()
+        {
+            throw new NotImplementedException();
         }
     }
+
+
+
 }

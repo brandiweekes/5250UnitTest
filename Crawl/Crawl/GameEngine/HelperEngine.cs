@@ -19,32 +19,34 @@ namespace Crawl.GameEngine
         /// <param name="rolls">The number of Rolls to Make</param>
         /// <param name="dice">The Dice to Roll</param>
         /// <returns></returns>
-        public static int RollDice (int rolls, int dice)
+        public static int RollDice(int rolls, int dice)
         {
+           
+
+            if (rolls < 1)
+            {
+                return 0;
+            }
+
+            if (dice < 1)
+            {
+                return 0;
+            }
+
+            if (GameGlobals.ForceRollsToNotRandom)
+            {
+                return GameGlobals.ForcedRandomValue * rolls;
+            }
+
             var myReturn = 0;
 
-            for (var i = 0; i < rolls; i++)
+            for(var i = 0; i < rolls; i++)
             {
-                // Add one to the dice, because random is between.  So 1-10 is rnd.Next(1,11)
+                // Add one to the dice, beacue random is between. So 1-10 is rnd.Next(1,11)
                 myReturn += rnd.Next(1, dice + 1);
             }
 
             return myReturn;
-        }
-
-        //if (rolls < 1)
-        //{
-        //    return 0;
-        //}
-
-        //if (dice < 1)
-        //{
-        //    return 0;
-        //}
-
-        //if (GameGlobals.ForceRollsToNotRandom)
-        //{
-        //    return GameGlobals.ForcedRandomValue * rolls;
-        //}
+        }          
     }
 }
