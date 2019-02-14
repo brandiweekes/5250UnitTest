@@ -98,13 +98,40 @@ namespace UnitTests.GameEngine
         public void RollDice_Roll_1_Dice_10_Fixed_Should_Return_5()
         {
             // Arrange
-            
+            var Roll = 1;
+            var Dice = 10;
+            var ForcedRandomNumbersValue = 5;
+            var Expected = 5;
+            Crawl.Models.GameGlobals.SetForcedRandomNumbers(ForcedRandomNumbersValue, 0);
+
             // Act
-            
+            var Actual = Crawl.GameEngine.HelperEngine.RollDice(Roll, Dice);
+
             // Reset
-            //Crawl.Models.GameGlobals.ToggleRandomState();
+            Crawl.Models.GameGlobals.ToggleRandomState();
 
             // Assert
+            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+        }
+
+        [Test]
+        public void RollDice_Roll_3_Dice_10_Fixed_Should_Return_15()
+        {
+            // Arrange
+            var Roll = 3;
+            var Dice = 10;
+            var ForcedRandomNumbersValue = 5;
+            var Expected = 15;
+            Crawl.Models.GameGlobals.SetForcedRandomNumbers(ForcedRandomNumbersValue, 0);
+
+            // Act
+            var Actual = Crawl.GameEngine.HelperEngine.RollDice(Roll, Dice);
+
+            // Reset
+            Crawl.Models.GameGlobals.ToggleRandomState();
+
+            // Assert
+            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
         }
     }
 
