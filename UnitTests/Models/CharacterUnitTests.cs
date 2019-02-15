@@ -120,5 +120,46 @@ namespace UnitTests.Models
             Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
         }
 
+        [Test]
+        public void ScaleLevel_Level_1_Fixed_5_MaxHealth_Should_Equal_5()
+        {
+            // Arrange
+            var TestCharacter = new Crawl.Models.Character();
+            var Level = 1;
+            var ForcedRandomNumbersValue = 5;
+            Crawl.Models.GameGlobals.SetForcedRandomNumbers(ForcedRandomNumbersValue, 0);
+            var Expected = 5;
+
+            // Act
+            TestCharacter.ScaleLevel(Level);
+
+            // Reset
+            Crawl.Models.GameGlobals.ToggleRandomState();
+
+            // Assert
+            var Actual = TestCharacter.Attribute.MaxHealth;
+            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+        }
+
+        [Test]
+        public void ScaleLevel_Level_2_Fixed_5_MaxHealth_Should_Equal_10()
+        {
+            // Arrange
+            var TestCharacter = new Crawl.Models.Character();
+            var Level = 2;
+            var ForcedRandomNumbersValue = 5;
+            Crawl.Models.GameGlobals.SetForcedRandomNumbers(ForcedRandomNumbersValue, 0);
+            var Expected = 10;
+
+            // Act
+            TestCharacter.ScaleLevel(Level);
+
+            // Reset
+            Crawl.Models.GameGlobals.ToggleRandomState();
+
+            // Assert
+            var Actual = TestCharacter.Attribute.MaxHealth;
+            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+        }
     }
 }
